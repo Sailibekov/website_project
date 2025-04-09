@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.20.1"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "layer": [{"mark": {"type": "rect"}, "encoding": {"color": {"field": "Correlation", "scale": {"domain": [-0.8, 0.8], "scheme": "redblue"}, "type": "quantitative"}, "tooltip": [{"field": "Feature1", "type": "nominal"}, {"field": "Feature2", "type": "nominal"}, {"field": "Correlation", "format": ".2f", "type": "quantitative"}], "x": {"axis": {"labelAngle": -45}, "field": "Feature2", "title": "Features", "type": "nominal"}, "y": {"field": "Feature1", "title": "Features", "type": "nominal"}}, "title": "Feature Correlation Matrix"}, {"mark": {"type": "text"}, "encoding": {"color": {"condition": {"test": "datum.Correlation > 0.3 || datum.Correlation < -0.3", "value": "white"}, "value": "black"}, "text": {"field": "Correlation", "format": ".2f", "type": "quantitative"}, "x": {"field": "Feature2", "type": "nominal"}, "y": {"field": "Feature1", "type": "nominal"}}}], "data": {"name": "data-195180cace7ff5fcfb825c8727763002"}, "height": 560, "width": 810, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-195180cace7ff5fcfb825c8727763002": [{"Feature1": "Hours_Studied", "Feature2": "Hours_Studied", "Correlation": 1.0}, {"Feature1": "Attendance", "Feature2": "Hours_Studied", "Correlation": -0.009907859200133573}, {"Feature1": "Sleep_Hours", "Feature2": "Hours_Studied", "Correlation": 0.010976689296114167}, {"Feature1": "Previous_Scores", "Feature2": "Hours_Studied", "Correlation": 0.024845782067961335}, {"Feature1": "Tutoring_Sessions", "Feature2": "Hours_Studied", "Correlation": -0.014282264334903245}, {"Feature1": "Physical_Activity", "Feature2": "Hours_Studied", "Correlation": 0.004624390272586104}, {"Feature1": "Exam_Score", "Feature2": "Hours_Studied", "Correlation": 0.44545495407528174}, {"Feature1": "Hours_Studied", "Feature2": "Attendance", "Correlation": -0.009907859200133573}, {"Feature1": "Attendance", "Feature2": "Attendance", "Correlation": 1.0}, {"Feature1": "Sleep_Hours", "Feature2": "Attendance", "Correlation": -0.01591782576568073}, {"Feature1": "Previous_Scores", "Feature2": "Attendance", "Correlation": -0.020186102959987302}, {"Feature1": "Tutoring_Sessions", "Feature2": "Attendance", "Correlation": 0.014323509499262678}, {"Feature1": "Physical_Activity", "Feature2": "Attendance", "Correlation": -0.022434702703492678}, {"Feature1": "Exam_Score", "Feature2": "Attendance", "Correlation": 0.5810718633120634}, {"Feature1": "Hours_Studied", "Feature2": "Sleep_Hours", "Correlation": 0.010976689296114167}, {"Feature1": "Attendance", "Feature2": "Sleep_Hours", "Correlation": -0.01591782576568073}, {"Feature1": "Sleep_Hours", "Feature2": "Sleep_Hours", "Correlation": 1.0}, {"Feature1": "Previous_Scores", "Feature2": "Sleep_Hours", "Correlation": -0.021750343098425523}, {"Feature1": "Tutoring_Sessions", "Feature2": "Sleep_Hours", "Correlation": -0.012216112032957423}, {"Feature1": "Physical_Activity", "Feature2": "Sleep_Hours", "Correlation": -0.00037806520293002946}, {"Feature1": "Exam_Score", "Feature2": "Sleep_Hours", "Correlation": -0.017021628571502353}, {"Feature1": "Hours_Studied", "Feature2": "Previous_Scores", "Correlation": 0.024845782067961335}, {"Feature1": "Attendance", "Feature2": "Previous_Scores", "Correlation": -0.020186102959987302}, {"Feature1": "Sleep_Hours", "Feature2": "Previous_Scores", "Correlation": -0.021750343098425523}, {"Feature1": "Previous_Scores", "Feature2": "Previous_Scores", "Correlation": 1.0}, {"Feature1": "Tutoring_Sessions", "Feature2": "Previous_Scores", "Correlation": -0.013122325694712535}, {"Feature1": "Physical_Activity", "Feature2": "Previous_Scores", "Correlation": -0.011273733910109123}, {"Feature1": "Exam_Score", "Feature2": "Previous_Scores", "Correlation": 0.175079087022911}, {"Feature1": "Hours_Studied", "Feature2": "Tutoring_Sessions", "Correlation": -0.014282264334903245}, {"Feature1": "Attendance", "Feature2": "Tutoring_Sessions", "Correlation": 0.014323509499262678}, {"Feature1": "Sleep_Hours", "Feature2": "Tutoring_Sessions", "Correlation": -0.012216112032957423}, {"Feature1": "Previous_Scores", "Feature2": "Tutoring_Sessions", "Correlation": -0.013122325694712535}, {"Feature1": "Tutoring_Sessions", "Feature2": "Tutoring_Sessions", "Correlation": 1.0}, {"Feature1": "Physical_Activity", "Feature2": "Tutoring_Sessions", "Correlation": 0.017732945340729694}, {"Feature1": "Exam_Score", "Feature2": "Tutoring_Sessions", "Correlation": 0.1565251853922524}, {"Feature1": "Hours_Studied", "Feature2": "Physical_Activity", "Correlation": 0.004624390272586104}, {"Feature1": "Attendance", "Feature2": "Physical_Activity", "Correlation": -0.022434702703492678}, {"Feature1": "Sleep_Hours", "Feature2": "Physical_Activity", "Correlation": -0.00037806520293002946}, {"Feature1": "Previous_Scores", "Feature2": "Physical_Activity", "Correlation": -0.011273733910109123}, {"Feature1": "Tutoring_Sessions", "Feature2": "Physical_Activity", "Correlation": 0.017732945340729694}, {"Feature1": "Physical_Activity", "Feature2": "Physical_Activity", "Correlation": 1.0}, {"Feature1": "Exam_Score", "Feature2": "Physical_Activity", "Correlation": 0.0278244361802574}, {"Feature1": "Hours_Studied", "Feature2": "Exam_Score", "Correlation": 0.44545495407528174}, {"Feature1": "Attendance", "Feature2": "Exam_Score", "Correlation": 0.5810718633120634}, {"Feature1": "Sleep_Hours", "Feature2": "Exam_Score", "Correlation": -0.017021628571502353}, {"Feature1": "Previous_Scores", "Feature2": "Exam_Score", "Correlation": 0.175079087022911}, {"Feature1": "Tutoring_Sessions", "Feature2": "Exam_Score", "Correlation": 0.1565251853922524}, {"Feature1": "Physical_Activity", "Feature2": "Exam_Score", "Correlation": 0.0278244361802574}, {"Feature1": "Exam_Score", "Feature2": "Exam_Score", "Correlation": 1.0}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sankey Diagram </title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+  <header>
+    <nav class="container">
+      <div class="logo">
+        <h1>Student Performance Analysis</h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="data.html">Data</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">Visualizations</a>
+          <div class="dropdown-content">
+            <a href="visualization1.html">Dashboard</a>
+            <a href="visualization2.html" class="active">Sankey Diagram</a>
+            <a href="visualization3.html">Correlation Matrix</a>
+            <a href="visualization4.html">Parallel Coordinates Plot</a>
+            <a href="visualization5.html">Attendance Boxplot</a>
+          </div>
+        </li>
+        <li><a href="conclusion.html">Conclusion</a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+  <main class="container">
+  <section>
+    <div class="viz-container">
+      <h2>Sankey Diagram - Plotly</h2>
+      <p>Analyzing the flows</p>
+      <div class="viz-frame">
+        <iframe 
+          src="visualizations/vis2.html">
+        </iframe>
+      </div>
+
+      <div class="insights">
+        <h3>Key Insights</h3>
+        <ul class="insights-list">
+          <li>
+            <strong>Public vs. Private Enrollment:</strong>
+            <p>
+              The majority of students in the dataset attend public schools, with approximately 4.6 thousand students, compared to 2.01 thousand students in private schools.
+            </p>
+          </li>
+          <li>
+            <strong>Gender Distribution by School Type:</strong>
+            <p>
+              From public schools, approximately 2.65 thousand students are male and 1.95 thousand are female.<br>
+              From private schools, around 1.17 thousand students are male and 843 are female.<br>
+              This shows a relatively balanced gender distribution across school types, although public schools have higher overall representation.
+            </p>
+          </li>
+          <li>
+            <strong>Score Distribution (60–69 Dominance):</strong>
+            <p>
+              A large majority of both male and female students, regardless of school type, score within the 60–69 range, indicating this is the most common performance band.<br>
+              About 2.83 thousand males and 2.08 thousand females fall into this group.
+            </p>
+          </li>
+          <li>
+            <strong>Mid-to-High Performance (70–79):</strong>
+            <p>
+              The next largest group of students fall into the 70–79 range.<br>
+              Approximately 916 males and 661 females reach this band. Interestingly, both genders contribute meaningfully here, suggesting that some students from both public and private schools manage to surpass the average performance group.
+            </p>
+          </li>
+          <li>
+            <strong>Top Performers (80+ Scores):</strong>
+            <p>
+              Very few students reach the 80–89 or 90–100 ranges. Only 47 students in total score above 80, with 27 males and 20 females. These top scorers are spread thinly and show no strong dominance from either school type.
+            </p>
+          </li>
+        </ul>
+      </div>
+      
+
+      <div class="nav-buttons">
+        <a href="visualization1.html" class="btn">← Previous: Dashboard</a>
+        <a href="visualization3.html" class="btn">Next: Correlation Matrix →</a>
+      </div>
+    </div>
+  </section>
+  </main>
+</body>
+
+</html>

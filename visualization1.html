@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+  <header>
+    <nav class="container">
+      <div class="logo">
+        <h1>Student Performance Analysis</h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="data.html">Data</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">Visualizations</a>
+          <div class="dropdown-content">
+            <a href="visualization1.html" class="active">Dashboard</a>
+            <a href="visualization2.html">Sankey Diagram</a>
+            <a href="visualization3.html">Correlation Matrix</a>
+            <a href="visualization4.html">Parallel Coordinates Plot</a>
+            <a href="visualization5.html">Attendance Boxplot</a>
+          </div>
+        </li>
+        <li><a href="conclusion.html">Conclusion</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  
+  <main class="container">
+    <section>
+      <!-- Container for the Dashboard visualization -->
+      <div class="viz-container">
+        <h2>Dashboard - Plotly</h2>
+        <p>An Overview of Student Performance Factors</p>
+        
+        <!-- Container for the visualization frame -->
+        <div class="viz-frame">
+          <iframe 
+            src="visualizations/vis1.html">
+          </iframe>
+        </div>
+  
+        <div class="insights">
+          <h3>Key Insights</h3>
+          <ul class="insights-list">
+            <li>
+              <strong>Gender Distribution:</strong>
+              <p>Males make up a larger share of the dataset (57.7%) compared to females (42.3%), which may affect overall performance trends in the analysis.</p>
+            </li>
+            <li>
+              <strong>Parental Involvement:</strong>
+              <p>Over half of the students experience medium levels of parental involvement (50.9%), while high and low involvement levels represent 28.9% and 20.2% respectively. This suggests moderate parental engagement is most common.</p>
+            </li>
+            <li>
+              <strong>School Type Distribution:</strong>
+              <p>The majority of students (69.6%) attend public schools, while 30.4% go to private schools, indicating a strong public school representation in the dataset.</p>
+            </li>
+            <li>
+              <strong>Motivation Level → Exam Score (Sunburst):</strong>
+              <p>More than 50% of students fall under the medium motivation category. However, across all motivation levels, the majority of students tend to score within the 60–74 range. Very few students, regardless of whether they had low, medium, or high motivation, achieve exam scores above 75%, suggesting that even high motivation does not often push scores into the top bands, possibly indicating other limiting factors like teaching quality or curriculum difficulty.</p>
+            </li>
+            <li>
+              <strong>Exam Score Distribution by Gender:</strong>
+              <p>The distribution is bell-shaped for both genders, centered between 64–70. Male students slightly outnumber females in the mid-to-high range (66–70), especially near the mode (~67). There’s a sharp drop-off for both genders after 75, but females appear to maintain slightly higher tail values beyond 70 compared to males, suggesting a small subset of high-performing female students.</p>
+            </li>
+          </ul>
+        </div>
+        
+        
+        <div class="nav-buttons">
+          <a href="data.html" claxss="btn">← Back to Data</a>
+          <a href="visualization2.html" claxss="btn">Next: Sankey Diagram →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

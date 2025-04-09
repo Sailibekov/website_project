@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parallel Coordinates Plot</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <header>
+    <nav class="container">
+      <div class="logo">
+        <h1>Student Performance Analysis</h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="data.html">Data</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">Visualizations</a>
+          <div class="dropdown-content">
+            <a href="visualization1.html">Dashboard</a>
+            <a href="visualization2.html">Sankey Diagram</a>
+            <a href="visualization3.html">Correlation Matrix</a>
+            <a href="visualization4.html" class="active">Parallel Coordinates Plot</a>
+            <a href="visualization5.html">Attendance Boxplot</a>
+          </div>
+        </li>
+        <li><a href="conclusion.html">Conclusion</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section>
+      <div class="viz-container">
+        <h2>Parallel Coordinates Plot - D3</h2>
+        <p>Uncovering Patterns of Top Contributors</p>
+       
+        <div class="viz-frame">
+          <iframe 
+            src="visualizations/vis4.html">
+          </iframe>
+        </div>
+        
+        <div class="insights">
+          <h3>Key Insights</h3>
+          <ul class="insights-list">
+            <li>
+              <strong>Strong Impact of Attendance and Study Hours:</strong>
+              <p>
+                As the correlation matrix shows, attendance and hours studied have a great effect on current exam scores. Most of the lines representing students with high attendance and high study hours trend toward high exam scores.
+              </p>
+            </li>
+            <li>
+              <strong>Limited Influence of Previous Scores:</strong>
+              <p>
+                In contrast, previous scores appear to have little direct effect on current exam performance. The plot shows that lines passing through the previous score axis can end up at a wide range of exam scores, from low to high.
+              </p>
+            </li>
+          </ul>
+        </div>
+        
+        
+        
+        <div class="nav-buttons">
+          <a href="visualization3.html" class="btn">← Previous: Correlation Matrix</a>
+          <a href="visualization5.html" class="btn">Next: Attendance Boxplot →</a>
+        </div>
+      </div>
+     
+    </section>
+  </main>
+</body>
+</html>
+    

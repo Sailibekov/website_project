@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dataset</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <h1>Student Performance Analysis</h1>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="data.html" class="active">Data</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Visualizations</a>
+                    <div class="dropdown-content">
+                        <a href="visualization1.html">Dashboard</a>
+                        <a href="visualization2.html">Sankey Diagram</a>
+                        <a href="visualization3.html">Correlation Matrix</a>
+                        <a href="visualization4.html">Parallel Coordinates Plot</a>
+                        <a href="visualization5.html">Attendance Boxplot</a>
+                    </div>
+                </li>
+                <li><a href="conclusion.html">Conclusion</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section>
+          <div class="vis-container">
+            <h2>About the Data</h2>
+            <p>
+              This dataset offers an overview of the key factors that influence student academic performance. It includes a wide range of variables such as study habits, class attendance, parental involvement, and other behavioral and socio-demographic indicators. By capturing these diverse elements, the dataset enables a deep analysis of student performance and helps uncover insights into the educational process.
+            </p>
+      
+            <h3>Data Structure</h3>
+            <div style="overflow-x: auto;">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Variable</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>gender</td>
+                    <td>Categorical</td>
+                    <td>Student's gender</td>
+                  </tr>
+                  <tr>
+                    <td>attendance</td>
+                    <td>Continuous</td>
+                    <td>Percentage of classes attended</td>
+                  </tr>
+                  <tr>
+                    <td>hours_studied</td>
+                    <td>Continuous</td>
+                    <td>Weekly study hours outside class</td>
+                  </tr>
+                  <tr>
+                    <td>parental_involvement</td>
+                    <td>Categorical</td>
+                    <td>Level of parental involvement (Low, Medium, High)</td>
+                  </tr>
+                  <tr>
+                    <td>sleep_hours</td>
+                    <td>Continuous</td>
+                    <td>Average number of hours of sleep per night</td>
+                  </tr>
+                  <tr>
+                    <td>access_to_resources</td>
+                    <td>Categorical</td>
+                    <td>Availability of educational resources (Low, Medium, High)</td>
+                  </tr>
+                  <tr>
+                    <td>exam_score</td>
+                    <td>Continuous</td>
+                    <td>Final exam score</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+      
+            <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+              <div class="card">
+                <h3>Data Source</h3>
+                <p>
+                  The dataset is a fabricated compilation based on real-world data available on Kaggle. It contains detailed information on 6,607 students, featuring 20 different variables. This comprehensive dataset is designed to help analyze the multifaceted aspects of academic performance.
+                </p>
+                <p>
+                  The source data has been curated to include a diverse set of indicators ranging from attendance and study habits to socio-demographic factors, offering a robust foundation for insights into student outcomes.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      
+    </div>
+</body>
+</html>
+    

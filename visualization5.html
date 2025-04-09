@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attendance Boxplot - Student Performance</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <header>
+    <nav class="container">
+      <div class="logo">
+        <h1>Student Performance Analysis</h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="data.html">Data</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">Visualizations</a>
+          <div class="dropdown-content">
+            <a href="visualization1.html">Dashboard</a>
+            <a href="visualization2.html">Sankey Diagram</a>
+            <a href="visualization3.html">Correlation Matrix</a>
+            <a href="visualization4.html">Parallel Coordinates Plot</a>
+            <a href="visualization5.html" class="active">Attendance Boxplot</a>
+          </div>
+        </li>
+        <li><a href="conclusion.html">Conclusion</a></li>
+      </ul>
+    </nav>
+  </header>
+
+<main class="container">
+    <section>
+      <div class="viz-container">
+        <h2>Attendance Boxplot - Seaborn</h2>
+        <p>Exploring Attendance Trends and Their Impact on Performance</p>
+        <div class="viz-frame">
+          <iframe 
+            src="visualizations/vis5.png">
+          </iframe>
+        </div>
+        
+        <div class="insights">
+          <h3>Key Insights on Attendance and Exam Scores</h3>
+          <ul class="insights-list">
+            <li>
+              <strong>Higher Attendance, Higher Scores:</strong> Students with 91–100% attendance have significantly higher median exam scores compared to those with 60–70% attendance, highlighting a strong positive correlation between regular class attendance and exam performance.
+            </li>
+            <li>
+              <strong>Greater Variability in High Attendance:</strong> Although high attendance generally leads to better outcomes, the exam scores in this group show a wider spread, suggesting that additional factors may influence performance among regular attendees.
+            </li>
+            <li>
+              <strong>Consistent Low Scores for Low Attendance:</strong> The low-attendance group exhibits a tighter clustering of lower exam scores, underscoring the negative impact of irregular attendance on academic success.
+            </li>
+          </ul>
+        </div>
+        
+        
+        
+        
+        <div class="nav-buttons">
+          <a href="visualization4.html" class="btn">← Previous: Parallel Coordinates Plot</a>
+          <a href="conclusion.html" class="btn">Conclusion →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
+  

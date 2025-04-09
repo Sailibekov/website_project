@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Correlation Matrix</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <header>
+    <nav class="container">
+      <div class="logo">
+        <h1>Student Performance Analysis</h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="data.html">Data</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">Visualizations</a>
+          <div class="dropdown-content">
+            <a href="visualization1.html">Dashboard</a>
+            <a href="visualization2.html">Sankey Diagram</a>
+            <a href="visualization3.html" class="active">Correlation Matrix</a>
+            <a href="visualization4.html">Parallel Coordinates Plot</a>
+            <a href="visualization5.html">Attendance Boxplot</a>
+          </div>
+        </li>
+        <li><a href="conclusion.html">Conclusion</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section>
+      <div class="viz-container">
+        <h2>Correlation Matrix - Altair</h2>
+        <p>Understanding What Contributes the Most To Exam Scores</p>
+        <div class="viz-frame">
+          <iframe 
+            src="visualizations/vis3.html">
+          </iframe>
+        </div>
+        
+        <div class="insights">
+          <h3>Key Insights</h3>
+          <ul class="insights-list">
+            <li>
+              <strong>Overall Relationships:</strong>
+              <p>
+                Our correlation matrix reveals several insights on the factors that influence student performance by showing which variables have the most meaningful relationships with exam outcomes.
+              </p>
+            </li>
+            <li>
+              <strong>Attendance:</strong>
+              <p>
+                Attendance shows the strongest positive correlation with exam scores (0.58), indicating that students who attend class more regularly tend to perform better on exams.
+              </p>
+            </li>
+            <li>
+              <strong>Study Hours:</strong>
+              <p>
+                Hours studied shows the second strongest relationship (0.45), suggesting that consistent studying contributes to higher exam outcomes.
+              </p>
+            </li>
+            <li>
+              <strong>Previous Scores & Tutoring:</strong>
+              <p>
+                Previous scores and the number of tutoring sessions show smaller but still positive correlations (0.18 and 0.16, respectively), implying that past performance and academic support play roles in student success.
+              </p>
+            </li>
+            <li>
+              <strong>Physical Activity & Sleep:</strong>
+              <p>
+                Surprisingly, factors such as physical activity (0.03) and sleep hours (–0.02) show little to no correlation with exam scores, suggesting that these factors may have minimal direct impact on academic performance.
+              </p>
+            </li>
+          </ul>
+        </div>
+        
+        
+        <div class="nav-buttons">
+          <a href="visualization2.html" class="btn">← Previous: Sankey Diagram</a>
+          <a href="visualization4.html" class="btn">Next: Parallel Coordinates Plot →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

@@ -96,7 +96,7 @@
     
     const colorScale = d3.scaleSequential(d3.interpolateViridis);
     
-    d3.csv("../../StudentPerformanceFactors.csv").then(data => {
+    d3.csv("../StudentPerformanceFactors.csv").then(data => {
       // Convert CSV values to numbers
       data.forEach(d => {
         d.Attendance = +d.Attendance;

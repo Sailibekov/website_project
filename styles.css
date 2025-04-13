@@ -49,7 +49,7 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Header and Navigation */
+
 header {
   background-color: white;
   box-shadow: var(--shadow);
@@ -122,7 +122,7 @@ nav {
   display: block;
 }
 
-/* Hero Section */
+
 .hero {
   background: var(--primary);
   color: white;
@@ -138,7 +138,7 @@ nav {
   margin: 0 auto;
 }
 
-/* Button Styles */
+
 .btn {
   display: inline-block;
   background-color: white;
@@ -154,7 +154,7 @@ nav {
   text-decoration: none;
 }
 
-/* Card Grid and Cards */
+
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -175,7 +175,7 @@ nav {
   margin-bottom: 0.8rem;
 }
 
-/* Conclusion  Containers */
+
 .vis-container {
   background-color: white;
   border-radius: var(--radius);
@@ -185,7 +185,6 @@ nav {
 }
 
 
-/* Key Insights Section */
 .insights {
   background-color: var(--light);
   border-radius: var(--radius);
@@ -203,14 +202,14 @@ nav {
   margin-bottom: 0.5rem;
 }
 
-/* Navigation Buttons */
+
 .nav-buttons {
   display: flex;
   justify-content: space-between;
   margin-top: 1.5rem;
 }
 
-/* Tables */
+
 table {
   border-collapse: collapse;
   width: 100%;
@@ -232,7 +231,7 @@ tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
-/* White container in visualizations secion -  */
+
 .viz-container {
   background-color: white;
   border: 2px solid var(--gray);
@@ -243,7 +242,7 @@ tr:nth-child(even) {
   box-shadow: var(--shadow);
 }
 
-/* Container for the embedded visualization */
+
 .viz-frame {
   width: 100%;
   max-width: 1200px;
@@ -256,7 +255,6 @@ tr:nth-child(even) {
 }
 
 
-/* Make sure the iframe fills its container */
 .viz-frame iframe {
   width: 100%;
   height: 100%;

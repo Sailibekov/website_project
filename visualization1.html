@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
@@ -33,15 +32,12 @@
     </nav>
   </header>
 
-  
   <main class="container">
     <section>
-      <!-- Container for the Dashboard visualization -->
+      
       <div class="viz-container">
-        <h2>Dashboard - Plotly</h2>
-        <p>An Overview of Student Performance Factors</p>
-        
-        <!-- Container for the visualization frame -->
+        <h2>An Overview of the Dataset</h2>
+        <p>Dashboard - Plotly</p>
         <div class="viz-frame">
           <iframe 
             src="visualizations/vis1.html">
@@ -53,11 +49,11 @@
           <ul class="insights-list">
             <li>
               <strong>Gender Distribution:</strong>
-              <p>Males make up a larger share of the dataset (57.7%) compared to females (42.3%), which may affect overall performance trends in the analysis.</p>
+              <p>Males make up a larger share of the dataset (57.7% or 3,814) compared to females (42.3% or 2,793), which may affect overall performance trends in the analysis.</p>
             </li>
             <li>
               <strong>Parental Involvement:</strong>
-              <p>Over half of the students experience medium levels of parental involvement (50.9%), while high and low involvement levels represent 28.9% and 20.2% respectively. This suggests moderate parental engagement is most common.</p>
+              <p>Over half of the students experience medium levels of parental involvement (50.9% or 3,362), while high and low involvement levels represent 28.9% (1,908) and 20.2% (1,337) respectively. This suggests moderate parental engagement is most common.</p>
             </li>
             <li>
               <strong>School Type Distribution:</strong>
@@ -69,15 +65,15 @@
             </li>
             <li>
               <strong>Exam Score Distribution by Gender:</strong>
-              <p>The distribution is bell-shaped for both genders, centered between 64–70. Male students slightly outnumber females in the mid-to-high range (66–70), especially near the mode (~67). There’s a sharp drop-off for both genders after 75, but females appear to maintain slightly higher tail values beyond 70 compared to males, suggesting a small subset of high-performing female students.</p>
+              <p>The distribution is bell-shaped for both genders, centered between 64–70. Male students slightly outnumber females in the mid-to-high range (66–67). Females appear to maintain slightly higher tail values beyond 70 compared to males, suggesting a small subset of high-performing female students.</p>
             </li>
           </ul>
         </div>
         
-        
         <div class="nav-buttons">
-          <a href="data.html" claxss="btn">← Back to Data</a>
-          <a href="visualization2.html" claxss="btn">Next: Sankey Diagram →</a>
+          <a href="data.html" class="btn">← Back to Data</a>
+          <a href="visualization2.html" class="btn">Next: Sankey Diagram →</a>
+        
         </div>
       </div>
     </section>

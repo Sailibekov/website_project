@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script src="https://d3js.org/d3.v6.min.js">
+  </script>
+  <style>
+    body { 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+      background: #f9f9f9; 
+      padding: 20px; 
+    }
+    .container {
+      max-width: 1100px; 
+      margin: auto; 
+      background: white; 
+      padding: 25px;
+      border-radius: 8px; 
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+    .filters { 
+      display: flex; 
+      flex-wrap: wrap; 
+      gap: 20px; 
+      margin-bottom: 25px; 
+      padding: 15px; 
+      background: #f0f4f8; 
+      border-radius: 6px; 
+    }
+    .filter-container { 
+      display: flex; 
+      align-items: center; 
+    }
+    label { 
+      margin-right: 10px; 
+      font-weight: 600; 
+    }
+    select { 
+      padding: 8px 12px; 
+      border: 1px solid #ddd; 
+      border-radius: 4px; 
+    }
+    .chart-container { 
+      position: relative; 
+    }
+    .tooltip {
+      position: absolute; 
+      background: rgba(255,255,255,0.9); 
+      border: 1px solid #ddd;
+      border-radius: 4px; 
+      padding: 10px; 
+      pointer-events: none; 
+      font-size: 12px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+      opacity: 0; 
+      transition: opacity 0.2s;
+    }
+    .axis path, .axis line { 
+      fill: none; 
+      stroke: #aaa; 
+    }
+    .axis text { 
+      fill: #555; 
+      font-size: 11px; 
+    }
+    .axis-label { 
+      font-size: 14px; 
+      font-weight: 600; 
+      fill: #2c3e50; 
+    }
+    .line { 
+      fill: none; 
+      stroke-width: 1.5; 
+      stroke-opacity: 0.35; 
+      transition: stroke-width 0.2s, stroke-opacity 0.2s; 
+    }
+    .line:hover { 
+      stroke-opacity: 1; 
+      stroke-width: 3; 
+      cursor: pointer; 
+    }
+    #legend { 
+      margin-top: 20px; 
+      text-align: center; 
+    }
+  </style>
+</head>
+
+
+<body>
+  <div class="container">
+    <div class="filters">
+      <div class="filter-container">
+        <label for="hours-filter">Hours Studied:</label>
+        <select id="hours-filter">
+          <option value="all">All</option>
+          <option value="low">Low (1-15)</option>
+          <option value="medium">Medium (15-30)</option>
+          <option value="high">High (30-44)</option>
+        </select>
+      </div>
+      <div class="filter-container">
+        <label for="attendance-filter">Attendance:</label>
+        <select id="attendance-filter">
+          <option value="all">All</option>
+          <option value="low">Low (60-80)</option>
+          <option value="medium">Medium (80-90)</option>
+          <option value="high">High (90-100)</option>
+        </select>
+      </div>
+      <div class="filter-container">
+        <label for="previous-scores-filter">Previous Scores:</label>
+        <select id="previous-scores-filter">
+          <option value="all">All</option>
+          <option value="low">Low (60-80)</option>
+          <option value="medium">Medium (80-90)</option>
+          <option value="high">High (90-100)</option>
+        </select>
+      </div>
+      <div class="filter-container">
+        <label for="exam-scores-filter">Exam Score:</label>
+        <select id="exam-scores-filter">
+          <option value="all">All</option>
+          <option value="low">Low (60-80)</option>
+          <option value="medium">Medium (80-90)</option>
+          <option value="high">High (90-100)</option>
+        </select>
+      </div>
+    </div>
+    <div id="legend"></div>
+    <div class="chart-container">
+      <svg id="parallel" width="1000" height="500"></svg>
+      <div id="tooltip" class="tooltip"></div>
+    </div>
+  </div>
+
+  <script>
+    const dimensions = ["Attendance", "Hours_Studied", "Previous_Scores", "Exam_Score"];
+    const margin = {top:40, right:80, bottom:40, left:0},
+          width = 1000 - margin.left - margin.right,
+          height = 500 - margin.top - margin.bottom;
+    
+    const svg = d3.select("#parallel")
+                  .attr("width", width + margin.left + margin.right)
+                  .attr("height", height + margin.top + margin.bottom)
+                  .append("g")
+                  .attr("transform", `translate(${margin.left},${margin.top})`);
+    
+    const tooltip = d3.select("#tooltip");
+    let originalData;
+    
+    const x = d3.scalePoint().domain(dimensions).range([0, width]).padding(0.1);
+    const y = {};
+    dimensions.forEach(dim => { y[dim] = d3.scaleLinear().range([height, 0]); });
+    
+    const colorScale = d3.scaleSequential()
+                         .interpolator(d3.interpolateOranges);
+    
+    d3.csv("../StudentPerformanceFactors.csv").then(data => {
+      data.forEach(d => {
+        d.Attendance = +d.Attendance;
+        d.Hours_Studied = +d.Hours_Studied;
+        d.Previous_Scores = +d.Previous_Scores;
+        d.Exam_Score = +d.Exam_Score;
+      });
+      originalData = data;
+      
+      dimensions.forEach(dim => { 
+        y[dim].domain(d3.extent(data, d => d[dim])); 
+      });
+
+      colorScale.domain(d3.extent(data, d => d.Exam_Score));
+      
+      updatePlot();
+      createLegend();
+    });
+    
+    const path = d => d3.line()(dimensions.map(p => [x(p), y[p](d[p])]));
+    
+    function updatePlot() {
+      const hours = d3.select("#hours-filter").property("value"),
+            attend = d3.select("#attendance-filter").property("value"),
+            prev = d3.select("#previous-scores-filter").property("value"),
+            exam = d3.select("#exam-scores-filter").property("value");
+      
+      const filtered = originalData.filter(d => {
+        const h = hours==="all" || (hours==="low" ? d.Hours_Studied>=1 && d.Hours_Studied<15 :
+                   hours==="medium" ? d.Hours_Studied>=15 && d.Hours_Studied<30 :
+                   d.Hours_Studied>=30 && d.Hours_Studied<=44);
+        const a = attend==="all" || (attend==="low" ? d.Attendance>=60 && d.Attendance<80 :
+                   attend==="medium" ? d.Attendance>=80 && d.Attendance<90 :
+                   d.Attendance>=90 && d.Attendance<=100);
+        const p = prev==="all" || (prev==="low" ? d.Previous_Scores>=60 && d.Previous_Scores<80 :
+                   prev==="medium" ? d.Previous_Scores>=80 && d.Previous_Scores<90 :
+                   d.Previous_Scores>=90 && d.Previous_Scores<=100);
+        const e = exam==="all" || (exam==="low" ? d.Exam_Score>=60 && d.Exam_Score<80 :
+                   exam==="medium" ? d.Exam_Score>=80 && d.Exam_Score<90 :
+                   d.Exam_Score>=90 && d.Exam_Score<=100);
+        return h && a && p && e;
+      });
+      drawPlot(filtered);
+    }
+    
+    function drawPlot(data) {
+      svg.selectAll("*").remove();
+      if (data.length === 0) {
+        svg.append("text")
+          .attr("x", width / 2)
+          .attr("y", height / 2)
+          .attr("text-anchor", "middle")
+          .text("No data matching these filter criteria");
+        return;
+      }
+      
+      svg.selectAll(".line")
+         .data(data)
+         .enter().append("path")
+         .attr("class", "line")
+         .attr("d", path)
+         .style("stroke", d => colorScale(d.Exam_Score))
+         .on("mouseover", (event, d) => {
+            d3.select(event.currentTarget)
+              .style("stroke-width", 3)
+              .style("stroke-opacity", 1);
+            tooltip.style("opacity", 1)
+              .html(`<strong>Attendance:</strong> ${d.Attendance}%<br>
+                     <strong>Hours Studied:</strong> ${d.Hours_Studied}h<br>
+                     <strong>Previous Scores:</strong> ${d.Previous_Scores}<br>
+                     <strong>Exam Score:</strong> ${d.Exam_Score}`)
+              .style("left", (event.pageX - 80)+ "px")
+              .style("top", (event.pageY - 200)+ "px");
+         })
+         .on("mouseout", (event, d) => {
+            d3.select(event.currentTarget)
+              .style("stroke-width", 1.5)
+              .style("stroke-opacity", 0.35);
+            tooltip.style("opacity", 0);
+         });
+      
+      dimensions.forEach(dim => {
+        const axis = d3.axisLeft(y[dim]).ticks(5);
+        svg.append("g")
+           .attr("class", "axis")
+           .attr("transform", `translate(${x(dim)},0)`)
+           .call(axis)
+           .append("text")
+           .attr("class", "axis-label")
+           .attr("y", -10)
+           .attr("text-anchor", "middle")
+           .text(dim.replace(/_/g, " "));
+      });
+    }
+    
+    function createLegend() {
+      let legendDiv = d3.select("#legend");
+      legendDiv.html("");
+      
+      const legendWidth = 220, legendHeight = 25;
+      const legendSvg = legendDiv.append("svg")
+                                 .attr("width", legendWidth)
+                                 .attr("height", legendHeight);
+      
+      const defs = legendSvg.append("defs");
+      const gradient = defs.append("linearGradient")
+                           .attr("id", "legend-gradient")
+                           .attr("x1", "0%")
+                           .attr("y1", "0%")
+                           .attr("x2", "100%")
+                           .attr("y2", "0%");
+      
+      
+      d3.range(0, 1.01, 0.1).forEach(t => {
+        gradient.append("stop")
+          .attr("offset", t * 100 + "%")
+          .attr("stop-color", d3.interpolateOranges(t));
+      });
+      
+      legendSvg.append("rect")
+               .attr("x", 10)
+               .attr("y", 0)
+               .attr("width", 200)
+               .attr("height", 10)
+               .style("fill", "url(#legend-gradient)");
+      
+      legendSvg.append("text")
+               .attr("x", 10)
+               .attr("y", 20)
+               .attr("font-size", "10px")
+               .text("Low Exam Score");
+      
+      legendSvg.append("text")
+               .attr("x", 210)
+               .attr("y", 20)
+               .attr("text-anchor", "end")
+               .attr("font-size", "10px")
+               .text("High Exam Score");
+    }
+    
+    d3.selectAll("select").on("change", updatePlot);
+  </script>
+</body>
+</html>
